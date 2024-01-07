@@ -9,6 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class DespesaDto {
+	private Long id;
 	private BigDecimal valor;
 	private LocalDate dia;
 	private String tipoDespesa;

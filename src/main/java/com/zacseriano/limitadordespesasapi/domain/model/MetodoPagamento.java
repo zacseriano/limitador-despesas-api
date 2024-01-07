@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class MetodoPagamento {
+public class MetodoPagamento extends GenericModel {
 	@Enumerated(EnumType.STRING)
 	private TipoPagamentoEnum tipoPagamento;
 	private Integer diaLimite;

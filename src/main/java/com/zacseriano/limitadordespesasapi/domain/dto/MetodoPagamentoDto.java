@@ -8,6 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class MetodoPagamentoDto {
+	private Long id;
 	private TipoPagamentoEnum tipoPagamento;
 	private Integer diaLimite;
 	private String nome;

@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class TipoDespesa {
+public class TipoDespesa extends GenericModel {
 	private String nome;
 	private BigDecimal teto;
 }
