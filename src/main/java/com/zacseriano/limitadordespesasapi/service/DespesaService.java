@@ -1,5 +1,7 @@
 package com.zacseriano.limitadordespesasapi.service;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,6 +13,7 @@ import com.zacseriano.limitadordespesasapi.domain.mapper.DespesaMapper;
 import com.zacseriano.limitadordespesasapi.domain.model.Despesa;
 import com.zacseriano.limitadordespesasapi.domain.model.MetodoPagamento;
 import com.zacseriano.limitadordespesasapi.domain.model.TipoDespesa;
+import com.zacseriano.limitadordespesasapi.domain.model.TipoPagamentoEnum;
 import com.zacseriano.limitadordespesasapi.repository.DespesaRepository;
 import com.zacseriano.limitadordespesasapi.validator.MetodoPagamentoValidator;
 import com.zacseriano.limitadordespesasapi.validator.TipoDespesaValidator;
@@ -38,8 +41,21 @@ public class DespesaService {
 		MetodoPagamento metodoPagamento = metodoPagamentoValidator.verificarExistencia(form.getIdMetodoPagamento());
 		despesa.setTipoDespesa(tipoDespesa);
 		despesa.setMetodoPagamento(metodoPagamento);
+		despesa.setDiaCobranca(validarDiaCobranca(despesa));
 		despesa = repository.save(despesa);
 		return mapper.toDto(despesa);
+	}
+	
+	private LocalDate validarDiaCobranca(Despesa despesa) {
+		if(despesa.getMetodoPagamento().getTipoPagamento().equals(TipoPagamentoEnum.DEBITO)) {
+			return despesa.getDia();
+		}
+		LocalDate diaDespesa = despesa.getDia();
+		LocalDate diaCobranca = diaDespesa.withDayOfMonth(despesa.getMetodoPagamento().getDiaLimite()).plusDays(8);
+		if(diaDespesa.getDayOfMonth() > despesa.getMetodoPagamento().getDiaLimite()) {
+			diaCobranca = diaCobranca.plusMonths(1);
+		}
+		return diaCobranca;
 	}
 
 }

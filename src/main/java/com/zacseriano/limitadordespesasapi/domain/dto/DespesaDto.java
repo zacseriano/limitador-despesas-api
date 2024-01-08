@@ -12,6 +12,7 @@ public class DespesaDto {
 	private Long id;
 	private BigDecimal valor;
 	private LocalDate dia;
+	private LocalDate diaCobranca;
 	private String tipoDespesa;
 	private String metodoPagamento;
 }

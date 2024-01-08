@@ -14,6 +14,7 @@ import lombok.Setter;
 public class Despesa extends GenericModel {
 	private BigDecimal valor;
 	private LocalDate dia;
+	private LocalDate diaCobranca;
 	@ManyToOne
 	private TipoDespesa tipoDespesa;
 	@ManyToOne
