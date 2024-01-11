@@ -33,18 +33,18 @@ public class DespesaSpecification extends GenericSpecification<Despesa>{
     }
     
     protected static Specification<Despesa> diaInicial(LocalDate diaInicial) {
-        return criarSpecification(builderFiltro(QueryOperator.GREATER_THAN_OR_EQUAL, "diaInicial", diaInicial));
+        return criarSpecification(builderFiltro(QueryOperator.GREATER_THAN_OR_EQUAL, "dia", diaInicial));
     }
     
     protected static Specification<Despesa> diaFinal(LocalDate diaFinal) {
-        return criarSpecification(builderFiltro(QueryOperator.LESS_THAN_OR_EQUAL, "diaFinal", diaFinal));
+        return criarSpecification(builderFiltro(QueryOperator.LESS_THAN, "dia", diaFinal));
     }
     
     protected static Specification<Despesa> diaCobrancaInicial(LocalDate diaCobrancaInicial) {
-        return criarSpecification(builderFiltro(QueryOperator.GREATER_THAN_OR_EQUAL, "diaCobrancaInicial", diaCobrancaInicial));
+        return criarSpecification(builderFiltro(QueryOperator.GREATER_THAN_OR_EQUAL, "diaCobranca", diaCobrancaInicial));
     }
     
     protected static Specification<Despesa> diaCobrancaFinal(LocalDate diaCobrancaFinal) {
-        return criarSpecification(builderFiltro(QueryOperator.LESS_THAN_OR_EQUAL, "diaCobrancaFinal", diaCobrancaFinal));
+        return criarSpecification(builderFiltro(QueryOperator.LESS_THAN, "diaCobranca", diaCobrancaFinal));
     }
 }

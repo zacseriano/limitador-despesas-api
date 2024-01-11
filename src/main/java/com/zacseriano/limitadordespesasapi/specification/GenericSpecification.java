@@ -35,6 +35,8 @@ public class GenericSpecification<T> {
                 return lessThanOrEqualTo(filtro.getChave(), filtro.getValor());
             case GREATER_THAN_OR_EQUAL:
                 return greaterThanOrEqualTo(filtro.getChave(), filtro.getValor());
+            case LESS_THAN :
+            	return lessThan(filtro.getChave(), filtro.getValor());
             default:
                 throw new RuntimeException("Operação não suportada.");
         }

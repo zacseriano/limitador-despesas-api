@@ -9,9 +9,9 @@ public class DespesaSpecificationBuilder {
         Specification<Despesa> specification = idTipoDespesa(filtro.getIdTipoDespesa(), null);
         specification = idMetodoPagamento(filtro.getIdMetodoPagamento(), specification);
         specification = diaInicial(filtro.getDiaInicial(), specification);
-        specification = diaFinal(filtro.getDiaInicial(), specification);
-        specification = diaCobrancaInicial(filtro.getDiaInicial(), specification);
-        specification = diaCobrancaFinal(filtro.getDiaInicial(), specification);
+        specification = diaFinal(filtro.getDiaFinal(), specification);
+        specification = diaCobrancaInicial(filtro.getDiaCobrancaInicial(), specification);
+        specification = diaCobrancaFinal(filtro.getDiaCobrancaFinal(), specification);
 
         return specification;
     }

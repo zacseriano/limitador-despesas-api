@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.zacseriano.limitadordespesasapi.domain.dto.DespesaDto;
 import com.zacseriano.limitadordespesasapi.domain.form.DespesaForm;
 import com.zacseriano.limitadordespesasapi.service.DespesaService;
+import com.zacseriano.limitadordespesasapi.specification.despesa.DespesaFiltro;
 
 import jakarta.validation.Valid;
 
@@ -24,8 +25,8 @@ public class DespesaController {
 	private DespesaService service;
 	
 	@GetMapping
-	public ResponseEntity<Page<DespesaDto>> listar(@PageableDefault(page = 0, size = 5) Pageable paginacao){
-		return ResponseEntity.ok(service.listar(paginacao));
+	public ResponseEntity<Page<DespesaDto>> listar(DespesaFiltro filtro, @PageableDefault(page = 0, size = 5) Pageable paginacao){
+		return ResponseEntity.ok(service.listar(filtro, paginacao));
 	}
 	
 	@PostMapping
